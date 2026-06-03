@@ -52,7 +52,7 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
     if len(torch.unique(y)) > 2:
         y_pred = torch.softmax(y_logits, dim=1).argmax(dim=1)
     else:
-        y_pred = torch.round(torch.sigmoid(y_logits))
+        y_pred = torch.round(y_logits)
 
     y_pred = y_pred.reshape(xx.shape).detach().numpy()
     plt.contourf(xx, yy, y_pred, cmap=plt.cm.RdYlBu, alpha=0.7)
