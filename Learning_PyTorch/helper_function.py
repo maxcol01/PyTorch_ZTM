@@ -50,7 +50,7 @@ def plot_decision_boundary(model: torch.nn.Module, X: torch.Tensor, y: torch.Ten
         y_logits = model(X_to_pred_on)
 
     if len(torch.unique(y)) > 2:
-        y_pred = torch.softmax(y_logits, dim=1).argmax(dim=1)
+        y_pred = y_logits.argmax(dim=1)
     else:
         y_pred = torch.round(y_logits)
 
